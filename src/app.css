@@ -1,0 +1,15 @@
+body, html {
+  color: black;
+}
+
+.root p {
+  color: green;
+}
+
+.active {
+ color:#53acff
+}
+
+a {
+  color: black;
+}
