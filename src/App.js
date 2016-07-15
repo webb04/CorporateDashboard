@@ -8,13 +8,13 @@ class App extends Component {
       <Router history={browserHistory}>
         <Route path='/' component={Container}>
           <IndexRoute component={Home} />
-          <Route path='/address' component={Address}>
+          <Route path='/geospatial' component={geospatial}>
             <IndexRoute component={TwitterFeed} />
             <Route path='instagram' component={Instagram} />
             <Route path='query' component={Query} />
           </Route>
-          <Route path='/about(/:name)' component={About} />
-          <Route path='/namedComponent' component={NamedComponents}>
+          <Route path='/keyMetrics(/:name)' component={keyMetrics} />
+          <Route path='/dataView' component={dataView}>
             <IndexRoute components={{ title: Title, subTitle: SubTitle }} />
           </Route>
           <Route path='*' component={NotFound} />
@@ -36,7 +36,7 @@ const SubTitle = () => (
   <h1>Hello from SubTitle Component</h1>
 )
 
-const NamedComponents = (props) => (
+const dataView = (props) => (
 	<div>
     {props.title}<br />
     {props.subTitle}
@@ -45,11 +45,9 @@ const NamedComponents = (props) => (
 
 const Nav = () => (
   <div>
-    <IndexLink onlyActiveOnIndex activeStyle={{color:'#53acff'}} activeClassName='active' to='/'>Home</IndexLink>&nbsp;
-    <IndexLink onlyActiveOnIndex activeStyle={{color:'#53acff'}} activeClassName='active' to='/address'>Address</IndexLink>&nbsp;
-    <IndexLink onlyActiveOnIndex activeStyle={{color:'#53acff'}} activeClassName='active' to='/about'>About</IndexLink>&nbsp;
-    <IndexLink onlyActiveOnIndex activeStyle={{color:'#53acff'}} activeClassName='active' to='/namedComponent'>Named Components</IndexLink>&nbsp;
-    <IndexLink onlyActiveOnIndex activeStyle={{color:'#53acff'}} activeClassName='active' to={{ pathname: '/address/query', query: { message: 'Hello from Route Query' } }}>Route Query</IndexLink>
+    <IndexLink onlyActiveOnIndex activeStyle={{color:'#53acff'}} activeClassName='active' to='/geospatial'>Geospatial</IndexLink>&nbsp;
+    <IndexLink onlyActiveOnIndex activeStyle={{color:'#53acff'}} activeClassName='active' to='/keyMetrics'>Key Metrics</IndexLink>&nbsp;
+    <IndexLink onlyActiveOnIndex activeStyle={{color:'#53acff'}} activeClassName='active' to='/dataView'>Data View</IndexLink>&nbsp;
   </div>
 )
 
@@ -60,10 +58,10 @@ const Container = (props) => <div>
 
 const Home = () => <h1>Hello from Home!</h1>
 
-const Address = (props) => <div>
+const geospatial = (props) => <div>
   <br />
-  <Link onlyActiveOnIndex activeStyle={{color:'#53acff'}} to='/address'>Twitter Feed</Link>&nbsp;
-  <Link onlyActiveOnIndex activeStyle={{color:'#53acff'}} to='/address/instagram'>Instagram Feed</Link>
+  <Link onlyActiveOnIndex activeStyle={{color:'#53acff'}} to='/geospatial'>Twitter Feed</Link>&nbsp;
+  <Link onlyActiveOnIndex activeStyle={{color:'#53acff'}} to='/geospatial/instagram'>Instagram Feed</Link>
   <h1>We are located at 555 Jackson St.</h1>
   {props.children}
 </div>
@@ -71,9 +69,9 @@ const Address = (props) => <div>
 const Instagram = () => <h3>Instagram Feed</h3>
 const TwitterFeed = () => <h3>Twitter Feed</h3>
 
-const About = (props) => (
+const keyMetrics = (props) => (
   <div>
-    <h3>Welcome to the About Page</h3>
+    <h3>Welcome to the keyMetrics Page</h3>
     { props.params.name && <h2>Hello, {props.params.name}</h2>}
   </div>
 )
