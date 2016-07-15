@@ -1,15 +1,29 @@
 body, html {
   color: black;
+  margin: 0px;
+  font-family: 'Raleway', sans-serif;
 }
 
-.root p {
-  color: green;
+#root {
+  width: 80%;
+  margin: auto;
 }
 
 .active {
- color:#53acff
+ color:#53acff;
 }
 
 a {
   color: black;
+  text-decoration: none;
+}
+
+#links {
+  width: 100%;
+  text-align: center;
+  margin-top: 3%;
+}
+
+#links a {
+  padding: 10px;
 }
