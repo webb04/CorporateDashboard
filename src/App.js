@@ -1,8 +1,6 @@
 import styles from './app.css';
 import React, { Component } from 'react'
 import { Router, Route, Link, IndexRoute, hashHistory, browserHistory, DefaultRoute, IndexLink } from 'react-router'
-import keyMetrics from './keyMetrics'
-import geospatial from './geospatial'
 
 import geospatialRoute from './geospatial'
 import keyMetricsRoute from './keyMetrics'
@@ -43,7 +41,7 @@ browserHistory.listen(function(ev) {
   if (ev.pathname.toString() == "/geospatial") {
     setTimeout(function(){
       var map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: -34.397, lng: 150.644},
+        center: {lat: 51.795027, lng: -0.330963},
         zoom: 8
       });
     }, 100);
