@@ -1,0 +1,137 @@
+[
+  {
+    "submissionTimestamp" : "01/04/201612/03/201604/04/2016",
+    "customerName": "Ann West",
+    "customerEmailAddress": "ann@gmail.com",
+    "description": "Bad customer service experience",
+    "open": false,
+    "closedTimestamp": "04/06/2016",
+    "employeeName": "Jamie Smith"
+  },
+  {
+    "submissionTimestamp" : "",
+    "customerName": "Julie Patel",
+    "customerEmailAddress": "jpatel67@hotmail.com",
+    "description": "Charity stall request",
+    "open": true,
+    "closedTimestamp": "",
+    "employeeName": "Florence Choi"
+  },
+  {
+    "submissionTimestamp" : "",
+    "customerName": "Julie Patel",
+    "customerEmailAddress": "jpatel67@hotmail.com",
+    "description": "Sponsorship opportunity",
+    "open": true,
+    "closedTimestamp": "",
+    "employeeName": "Florence Choi"
+  },
+  {
+    "submissionTimestamp" : "",
+    "customerName": "Robert Luthard",
+    "customerEmailAddress": "theluth@sky.com",
+    "description": "Wrong size, needs to exchange for a smaller size",
+    "open": true,
+    "closedTimestamp": "",
+    "employeeName": "Jamie Smith"
+  },
+  {
+    "submissionTimestamp" : "12/03/201604/04/2016",
+    "customerName": "Robert Luthard",
+    "customerEmailAddress": "theluth@sky.com",
+    "description": "CV submitted",
+    "open": false,
+    "closedTimestamp": "15/07/2016",
+    "employeeName": "Jas Arum"
+  },
+  {
+    "submissionTimestamp" : "01/04/201612/03/201604/04/2016",
+    "customerName": "",
+    "customerEmailAddress": "",
+    "description": "Charged twice for transaction. Requests a refund",
+    "open": true,
+    "closedTimestamp": "",
+    "employeeName": "Jamie Smith"
+  },
+  {
+    "submissionTimestamp" : "",
+    "customerName": "",
+    "customerEmailAddress": "",
+    "description": "Charged twice for transaction. Requests a refund",
+    "open": true,
+    "closedTimestamp": "",
+    "employeeName": "Jas Arum"
+  },
+  {
+    "submissionTimestamp" : "04/04/2016",
+    "customerName": "",
+    "customerEmailAddress": "",
+    "description": "Press opportunity",
+    "open": true,
+    "closedTimestamp": "",
+    "employeeName": "Jas Arum"
+  },
+  {
+    "submissionTimestamp" : "12/03/201604/04/2016",
+    "customerName": "",
+    "customerEmailAddress": "",
+    "description": "",
+    "open": true,
+    "closedTimestamp": "",
+    "employeeName": "Artem Lobov"
+  },
+  {
+    "submissionTimestamp" : "04/04/2016",
+    "customerName": "",
+    "customerEmailAddress": "",
+    "description": "",
+    "open": true,
+    "closedTimestamp": "",
+    "employeeName": "Jamie Smith"
+  },
+  {
+    "submissionTimestamp" : "04/04/2016",
+    "customerName": "Ann West",
+    "customerEmailAddress": "ann@gmail.com",
+    "description": "Injured in store, threatening to sue",
+    "open": true,
+    "closedTimestamp": "",
+    "employeeName": "Artem Lobov"
+  },
+  {
+    "submissionTimestamp" : "",
+    "customerName": "Nick Cowie",
+    "customerEmailAddress": "",
+    "description": "Bad customer service experience",
+    "open": true,
+    "closedTimestamp": "",
+    "employeeName": "Artem Lobov"
+  },
+  {
+    "submissionTimestamp" : "",
+    "customerName": "Mike Summers",
+    "customerEmailAddress": "summersmike@gmail.com",
+    "description": "Injured in store, threatening to sue",
+    "open": false,
+    "closedTimestamp": "27/06/2016",
+    "employeeName": "Billy Crown"
+  },
+  {
+    "submissionTimestamp" : "",
+    "customerName": "Mike Summers",
+    "customerEmailAddress": "summersmike@gmail.com",
+    "description": "Charged twice for transaction. Requests a refund",
+    "open": true,
+    "closedTimestamp": "",
+    "employeeName": "Katie Mertens"
+  },
+  {
+    "submissionTimestamp" : "12/03/201604/04/2016",
+    "customerName": "Mike Summers",
+    "customerEmailAddress": "summersmike@gmail.com",
+    "description": "Wrong size, needs to exchange for a smaller size",
+    "open": false,
+    "closedTimestamp": "01/05/2016",
+    "employeeName": "Gemma Hendricks"
+  }
+]
