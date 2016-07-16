@@ -37,6 +37,19 @@ const Container = (props) => <div>
   {props.children}
 </div>
 
+
+browserHistory.listen(function(ev) {
+  console.log('listen', ev.pathname);
+  if (ev.pathname.toString() == "/geospatial") {
+    setTimeout(function(){
+      var map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: -34.397, lng: 150.644},
+        zoom: 8
+      });
+    }, 100);
+  }
+});
+
 const Home = () => <h1>Hello from Home!</h1>
 const NotFound = () => <h1>404.. This page is not found!</h1>
 
