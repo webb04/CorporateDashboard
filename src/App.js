@@ -6,49 +6,110 @@ import geospatialRoute from './geospatial'
 import keyMetricsRoute from './keyMetrics'
 import dataViewRoute from './dataView'
 
+import stylesArray from './style.js'
+
 class App extends Component {
-  render () {
-    return (
-      <Router history={browserHistory}>
-        <Route path='/' component={Container}>
-          <IndexRoute component={Home} />
-          {geospatialRoute}
-          {keyMetricsRoute}
-          {dataViewRoute}
-          <Route path='*' component={NotFound} />
-        </Route>
-      </Router>
-    )
+
+  componentDidMount() {
+    fetch('http://localhost:3000/src/data/employeeLocations.json')
+    .then(function(response) {
+    	 return response.json();
+    }).then(function(response) {
+
+      response.map(location => {
+        console.log(location);
+      })
+
+    }).catch(function(err) {
+    	// Error :(
+    });
   }
 }
 
-const Nav = () => (
-  <div id="links">
-    <IndexLink onlyActiveOnIndex activeStyle={{color:'#53acff'}} activeClassName='active' to='/geospatial'>Geospatial</IndexLink>&nbsp;
-    <IndexLink onlyActiveOnIndex activeStyle={{color:'#53acff'}} activeClassName='active' to='/keyMetrics'>Key Metrics</IndexLink>&nbsp;
-    <IndexLink onlyActiveOnIndex activeStyle={{color:'#53acff'}} activeClassName='active' to='/dataView'>Data View</IndexLink>&nbsp;
-  </div>
-)
-
-const Container = (props) => <div>
-  <Nav />
-  {props.children}
-</div>
-
-
 browserHistory.listen(function(ev) {
   console.log('listen', ev.pathname);
+
   if (ev.pathname.toString() == "/geospatial") {
+
     setTimeout(function(){
       var map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 51.795027, lng: -0.330963},
-        zoom: 8
+        center: {lat: 51.50735, lng: -0.12776},
+        zoom: 12,
+        styles: stylesArray
       });
-    }, 100);
+
+      var contentStringStrand = '<div id="content">'+
+             '<div id="siteNotice">'+
+             '</div>'+
+             '<h1 id="firstHeading" class="firstHeading">Strand</h1>'+
+             '<div id="bodyContent">'+
+             '</div>'+
+             '</div>';
+
+       var infowindowStrand = new google.maps.InfoWindow({
+         content: contentStringStrand,
+         maxWidth: 200
+       });
+
+       var strandMarker = new google.maps.Marker({
+         position: {lat: 51.51102, lng: -0.11718},
+         map: map,
+         title: 'Strand'
+       });
+
+       strandMarker.addListener('click', function() {
+         infowindowStrand.open(map, strandMarker);
+       });
+
+       var contentStringCity = '<div id="content">'+
+              '<div id="siteNotice">'+
+              '</div>'+
+              '<h1 id="firstHeading" class="firstHeading">City</h1>'+
+              '<div id="bodyContent">'+
+              '</div>'+
+              '</div>';
+
+        var infowindowCity = new google.maps.InfoWindow({
+          content: contentStringCity,
+          maxWidth: 200
+        });
+
+        var cityMarker = new google.maps.Marker({
+          position: {lat: 51.513310, lng: -0.087483},
+          map: map,
+          title: 'City'
+        });
+
+        cityMarker.addListener('click', function() {
+          infowindowCity.open(map, cityMarker);
+        });
+
+        var contentStringKnightsbridge = '<div id="content">'+
+               '<div id="siteNotice">'+
+               '</div>'+
+               '<h1 id="firstHeading" class="firstHeading">Knightsbridge</h1>'+
+               '<div id="bodyContent">'+
+               '</div>'+
+               '</div>';
+
+         var infowindowKnightsbridge = new google.maps.InfoWindow({
+           content: contentStringKnightsbridge,
+           maxWidth: 200
+         });
+
+         var knightsbridgeMarker = new google.maps.Marker({
+           position: {lat: 51.502826, lng: -0.192089},
+           map: map,
+           title: 'Knightsbridge'
+         });
+
+         knightsbridgeMarker.addListener('click', function() {
+           infowindowKnightsbridge.open(map, knightsbridgeMarker);
+         });
+
+
+    }, 0);
   }
 });
-
-const Home = () => <h1>Hello from Home!</h1>
-const NotFound = () => <h1>404.. This page is not found!</h1>
 
 export default App
