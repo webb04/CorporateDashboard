@@ -2,6 +2,9 @@ import App from './App';
 import React from 'react';
 import { render } from 'react-dom';
 import { Router, Route, Link, IndexRoute, hashHistory, browserHistory, DefaultRoute, IndexLink } from 'react-router'
+import geospatial from './geospatial'
+import keyMetrics from './keyMetrics'
+import dataView from './dataView'
 
 const Container = (props) => <div>
   <Nav />
@@ -19,20 +22,26 @@ const Nav = () => (
   </div>
 )
 
-import geospatialRoute from './geospatial'
-import keyMetricsRoute from './keyMetrics'
-import dataViewRoute from './dataView'
+const Title = () => (
+  <h1>Hello from Title Component</h1>
+)
+
+const SubTitle = () => (
+  <h1>Hello from SubTitle Component</h1>
+)
 
 const router = (<Router history={browserHistory}>
       <Route path='/' component={Container}>
         <IndexRoute component={Home} />
-        {geospatialRoute}
-        {keyMetricsRoute}
-        {dataViewRoute}
+        <Route path='/keyMetrics(/:name)' component={keyMetrics} name="Jamie"/>
+        <Route className="" path='/geospatial' component={geospatial}/>
+        <Route path='/dataView' component={dataView}>
+          <IndexRoute components={{ title: Title, subTitle: SubTitle }} />
+        </Route>
         <Route path='*' component={NotFound} />
       </Route>
     </Router>);
 
 render(router, document.getElementById('root'));
 
-store.subscribe(render)
+// store.subscribe(render)
