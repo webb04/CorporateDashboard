@@ -29,7 +29,10 @@
     "webpack-dev-server": "1.14.1"
   },
   "dependencies": {
+    "jquery": "^3.1.1",
     "react": "15.1.0",
+    "react-bar-chart": "^0.1.1",
+    "react-d3-basic": "^1.6.11",
     "react-dom": "15.1.0",
     "react-router": "^2.5.2",
     "react-router-redux": "^4.0.5",

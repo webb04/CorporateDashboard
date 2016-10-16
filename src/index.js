@@ -35,13 +35,9 @@ const router = (<Router history={browserHistory}>
         <IndexRoute component={Home} />
         <Route path='/keyMetrics(/:name)' component={keyMetrics} name="Jamie"/>
         <Route className="" path='/geospatial' component={geospatial}/>
-        <Route path='/dataView' component={dataView}>
-          <IndexRoute components={{ title: Title, subTitle: SubTitle }} />
-        </Route>
+        <Route path='/dataView' component={dataView}/>
         <Route path='*' component={NotFound} />
       </Route>
     </Router>);
 
 render(router, document.getElementById('root'));
-
-// store.subscribe(render)

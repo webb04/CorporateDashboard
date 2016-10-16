@@ -12,7 +12,6 @@ const TwitterFeed = () => <h3>Twitter Feed</h3>
 class geospatial extends Component {
   constructor(props) {
     super(props);
-    console.log("constructing 123 123");
   }
 
   componentDidMount() {
@@ -33,7 +32,7 @@ class geospatial extends Component {
                  '<h1 id="firstHeading" class="firstHeading">' + response[0].name + '</h1>'+
                  '<div id="bodyContent">'+
                  response[0].employees +
-                 '</div>'+
+                 'Employees</div>'+
                  '</div>';
 
            var infowindowStrand = new google.maps.InfoWindow({
@@ -57,7 +56,7 @@ class geospatial extends Component {
                   '<h1 id="firstHeading" class="firstHeading">' + response[1].name + '</h1>'+
                   '<div id="bodyContent">'+
                   response[1].employees +
-                  '</div>'+
+                  'Employees</div>'+
                   '</div>';
 
             var infowindowCity = new google.maps.InfoWindow({
@@ -81,7 +80,7 @@ class geospatial extends Component {
                    '<h1 id="firstHeading" class="firstHeading">' + response[2].name + '</h1>'+
                    '<div id="bodyContent">'+
                    response[2].employees +
-                   '</div>'+
+                   'Employees</div>'+
                    '</div>';
 
              var infowindowKnightsbridge = new google.maps.InfoWindow({
@@ -105,15 +104,14 @@ class geospatial extends Component {
   }
 
   mapClick() {
-    console.log("map clicked");
-    alert("we clicked");
+
   }
 
   render() {
     return (
       <div id="geospatial">
         <div id='map'></div>
-        <div id="capture" onClick={() => { this.mapClick() }}>yayayayayay</div>
+        <div id="capture" onClick={() => { this.mapClick() }}></div>
       </div>
     )
   }
