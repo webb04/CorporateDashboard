@@ -15,7 +15,7 @@ class geospatial extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/src/data/employeeLocations.json')
+    fetch('src/data/employeeLocations.json')
       .then(function(response) {
          return response.json();
       }).then(function(response) {
@@ -32,7 +32,7 @@ class geospatial extends Component {
                  '<h1 id="firstHeading" class="firstHeading">' + response[0].name + '</h1>'+
                  '<div id="bodyContent">'+
                  response[0].employees +
-                 'Employees</div>'+
+                 ' Employees</div>'+
                  '</div>';
 
            var infowindowStrand = new google.maps.InfoWindow({
@@ -56,7 +56,7 @@ class geospatial extends Component {
                   '<h1 id="firstHeading" class="firstHeading">' + response[1].name + '</h1>'+
                   '<div id="bodyContent">'+
                   response[1].employees +
-                  'Employees</div>'+
+                  ' Employees</div>'+
                   '</div>';
 
             var infowindowCity = new google.maps.InfoWindow({
@@ -80,7 +80,7 @@ class geospatial extends Component {
                    '<h1 id="firstHeading" class="firstHeading">' + response[2].name + '</h1>'+
                    '<div id="bodyContent">'+
                    response[2].employees +
-                   'Employees</div>'+
+                   ' Employees</div>'+
                    '</div>';
 
              var infowindowKnightsbridge = new google.maps.InfoWindow({

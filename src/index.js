@@ -6,12 +6,25 @@ import geospatial from './geospatial'
 import keyMetrics from './keyMetrics'
 import dataView from './dataView'
 
+import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
+import { createStore, combineReducers } from 'redux'
+
+import { Provider } from 'react-redux'
+import keyMetricsReducer from './reducers/keyMetricsReducer'
+
+const reducer = combineReducers({
+  keyMetricsReducer,
+  routing: routerReducer
+})
+
+const store = createStore(reducer);
+
 const Container = (props) => <div>
   <Nav />
   {props.children}
 </div>
 
-const Home = () => <h1>Hello from Home!</h1>
+const Home = () => <h1 className="home-title">Corporate Dashboard</h1>
 const NotFound = () => <h1>404.. This page is not found!</h1>
 
 const Nav = () => (
@@ -30,14 +43,22 @@ const SubTitle = () => (
   <h1>Hello from SubTitle Component</h1>
 )
 
-const router = (<Router history={browserHistory}>
-      <Route path='/' component={Container}>
-        <IndexRoute component={Home} />
-        <Route path='/keyMetrics(/:name)' component={keyMetrics} name="Jamie"/>
-        <Route className="" path='/geospatial' component={geospatial}/>
-        <Route path='/dataView' component={dataView}/>
-        <Route path='*' component={NotFound} />
-      </Route>
-    </Router>);
+const history = syncHistoryWithStore(browserHistory, store)
+
+const router = (
+    <Provider store={store}>
+      <div>
+        <Router history={history}>
+          <Route path='/' component={Container}>
+            <IndexRoute component={Home} />
+            <Route path='/keyMetrics(/:name)' component={keyMetrics} name="Jamie"/>
+            <Route className="" path='/geospatial' component={geospatial}/>
+            <Route path='/dataView' component={dataView}/>
+            <Route path='*' component={NotFound} />
+          </Route>
+        </Router>
+      </div>
+    </Provider>
+  );
 
 render(router, document.getElementById('root'));

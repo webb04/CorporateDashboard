@@ -22,7 +22,7 @@ class dataView extends Component {
   componentDidMount() {
     this.setState({ visibleIssues: []});
     var that = this;
-    fetch('http://localhost:3000/src/data/issues.json')
+    fetch('/src/data/issues.json')
       .then(function(response) {
          return response.json();
       }).then(function(response) {
@@ -31,11 +31,8 @@ class dataView extends Component {
   }
 
   handleInput(event) {
-    console.log(event.target.value);
     this.setState({searchInput: event.target.value});
-
     const originalIssues = this.state.originalIssues;
-
     let newVisibleIssues = [];
     originalIssues.forEach(issue => {
         const keys = Object.keys(issue);
