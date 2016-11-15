@@ -1,0 +1,56 @@
+{
+  "line" : [
+  	{
+  		"Customers": 39,
+  		"index": 9
+  	},
+  	{
+  		"Customers": 38,
+  		"index": 10
+  	},
+  	{
+  		"Customers": 34,
+  		"index": 11
+  	},
+  	{
+  		"Customers": 8,
+  		"index": 12
+  	},
+  	{
+  		"Customers": 12,
+  		"index": 13
+  	},
+  	{
+  		"Customers": 12,
+  		"index": 14
+  	},
+  	{
+  		"Customers": 14,
+  		"index": 15
+  	},
+  	{
+  		"Customers": 10,
+  		"index": 16
+  	},
+  	{
+  		"Customers": 23,
+  		"index": 17
+  	},
+  	{
+  		"Customers": 19,
+  		"index": 18
+  	}
+  ],
+  "bar" : [
+  	{"text": "9:00", "value": 8},
+  	{"text": "10:00", "value": 9},
+  	{"text": "11:00", "value": 4},
+  	{"text": "12:00", "value": 5},
+  	{"text": "13:00", "value": 1},
+  	{"text": "14:00", "value": 11},
+  	{"text": "15:00", "value": 9},
+  	{"text": "16:00", "value": 1},
+  	{"text": "17:00", "value": 3},
+  	{"text": "18:00", "value": 15}
+  ]
+}

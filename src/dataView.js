@@ -110,48 +110,51 @@ class dataView extends Component {
         <div className="input-container">
           <input type="text" placeholder="Search for an issue" value={this.state.searchInput} onChange={ this.handleInput.bind(this) }/>
         </div>
-        <table>
-          <thead>
-            <th onMouseOver={ this.submissionTimestampHover.bind(this) } onMouseLeave={ this.submissionTimestampHover.bind(this, "leave") } onClick={ this.filterColumn.bind(this, "submissionTimestamp") }>
-              { this.state.submissionTimestampHover ? <span className="hover">Filter</span> : "Submission Timestamp" }
-            </th>
-            <th onMouseOver={ this.customerNameHover.bind(this) } onMouseLeave={ this.customerNameHover.bind(this, "leave") } onClick={ this.filterColumn.bind(this, "customerName") }>
-              { this.state.customerNameHover ? <span className="hover">Filter</span> : "Customer Name" }
-            </th>
-            <th onMouseOver={ this.emailAdressHover.bind(this) } onMouseLeave={ this.emailAdressHover.bind(this, "leave") } onClick={ this.filterColumn.bind(this, "customerEmailAddress") }>
-              { this.state.emailAdressHover ? <span className="hover">Filter</span> : "Customer Email Address" }
-            </th>
-            <th onMouseOver={ this.descriptionHover.bind(this) } onMouseLeave={ this.descriptionHover.bind(this, "leave") } onClick={ this.filterColumn.bind(this, "description") }>
-              { this.state.descriptionHover ? <span className="hover">Filter</span> : "Description" }
-            </th>
-            <th onMouseOver={ this.statusHover.bind(this) } onMouseLeave={ this.statusHover.bind(this, "leave") } onClick={ this.filterColumn.bind(this, "open") }>
-              { this.state.statusHover ? <span className="hover">Filter</span> : "Status" }
-            </th>
-            <th onMouseOver={ this.closedTimestampHover.bind(this) } onMouseLeave={ this.closedTimestampHover.bind(this, "leave") } onClick={ this.filterColumn.bind(this, "closedTimestamp") }>
-              { this.state.closedTimestampHover ? <span className="hover">Filter</span> : "Closed Timestamp" }
-            </th>
-            <th onMouseOver={ this.employeeNameHover.bind(this) } onMouseLeave={ this.employeeNameHover.bind(this, "leave") } onClick={ this.filterColumn.bind(this, "employeeName") }>
-              { this.state.employeeNameHover ? <span className="hover">Filter</span> : "Employee Name" }
-            </th>
-          </thead>
-          <tbody>
-              {
-                this.state.visibleIssues.map(issue => {
-                  return (
-                    <tr>
-                      <td> { issue.submissionTimestamp } </td>
-                      <td> { issue.customerName } </td>
-                      <td className="email"> { issue.customerEmailAddress } </td>
-                      <td className="description"> { issue.description } </td>
-                      <td> { issue.open } </td>
-                      <td> { issue.closedTimestamp } </td>
-                      <td> { issue.employeeName } </td>
-                    </tr>
-                );
-                })
-              }
-        </tbody>
-      </table>
+        <div className="table-wrapper">
+          <table>
+            <thead>
+              <th onMouseOver={ this.submissionTimestampHover.bind(this) } onMouseLeave={ this.submissionTimestampHover.bind(this, "leave") } onClick={ this.filterColumn.bind(this, "submissionTimestamp") }>
+                { this.state.submissionTimestampHover ? <span className="hover">Filter</span> : "Submission Timestamp" }
+              </th>
+              <th onMouseOver={ this.customerNameHover.bind(this) } onMouseLeave={ this.customerNameHover.bind(this, "leave") } onClick={ this.filterColumn.bind(this, "customerName") }>
+                { this.state.customerNameHover ? <span className="hover">Filter</span> : "Customer Name" }
+              </th>
+              <th onMouseOver={ this.emailAdressHover.bind(this) } onMouseLeave={ this.emailAdressHover.bind(this, "leave") } onClick={ this.filterColumn.bind(this, "customerEmailAddress") }>
+                { this.state.emailAdressHover ? <span className="hover">Filter</span> : "Customer Email Address" }
+              </th>
+              <th onMouseOver={ this.descriptionHover.bind(this) } onMouseLeave={ this.descriptionHover.bind(this, "leave") } onClick={ this.filterColumn.bind(this, "description") }>
+                { this.state.descriptionHover ? <span className="hover">Filter</span> : "Description" }
+              </th>
+              <th onMouseOver={ this.statusHover.bind(this) } onMouseLeave={ this.statusHover.bind(this, "leave") } onClick={ this.filterColumn.bind(this, "open") }>
+                { this.state.statusHover ? <span className="hover">Filter</span> : "Status" }
+              </th>
+              <th onMouseOver={ this.closedTimestampHover.bind(this) } onMouseLeave={ this.closedTimestampHover.bind(this, "leave") } onClick={ this.filterColumn.bind(this, "closedTimestamp") }>
+                { this.state.closedTimestampHover ? <span className="hover">Filter</span> : "Closed Timestamp" }
+              </th>
+              <th onMouseOver={ this.employeeNameHover.bind(this) } onMouseLeave={ this.employeeNameHover.bind(this, "leave") } onClick={ this.filterColumn.bind(this, "employeeName") }>
+                { this.state.employeeNameHover ? <span className="hover">Filter</span> : "Employee Name" }
+              </th>
+            </thead>
+            <tbody>
+                {
+                  this.state.visibleIssues.map(issue => {
+                    return (
+                      <tr>
+                        <td> { issue.submissionTimestamp } </td>
+                        <td> { issue.customerName } </td>
+                        <td className="email"> { issue.customerEmailAddress } </td>
+                        <td className="description"> { issue.description } </td>
+                        <td> { issue.open } </td>
+                        <td> { issue.closedTimestamp } </td>
+                        <td> { issue.employeeName } </td>
+                      </tr>
+                  );
+                  })
+                }
+            </tbody>
+          </table>
+        </div>
+        <br/><br/>
       </div>
     )
   }

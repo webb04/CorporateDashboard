@@ -5,11 +5,16 @@ body, html {
   height: 100%;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 .home-title {
   text-align: center;
   margin-top: 50px;
+}
+
+text {
+  font-size: 11px;
 }
 
 #root {
@@ -21,11 +26,16 @@ body, html {
  color: #53acff;
 }
 
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  box-shadow: 2px 2px 2px 2px rgba(128, 128, 128, 0.4);
+}
+
 .table-container table {
   margin: auto;
   border-collapse: collapse;
   font-size: 11px;
-  margin-bottom: 50px;
 }
 
 .table-container table tr:nth-child(even) {
@@ -64,7 +74,8 @@ th * {
 .input-container {
   text-align: center;
   margin: auto;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  margin-top: 30px;
 }
 
 .input-container input {
@@ -104,6 +115,7 @@ a {
 
 #lineWrapper {
   margin-top: 50px;
+  margin-left: 15px;
 }
 
 #numberOfOpenIssues {
@@ -121,4 +133,31 @@ rect {
 
 .react-d3-core__legend {
   width: inherit !important;
+}
+
+@media (max-width: 650px) {
+  #lineWrapper {
+    position: absolute;
+    left: -70px;
+    margin-left: 0px;
+  }
+
+  #barWrapper {
+    position: absolute;
+    left: -20px;
+    top: 400px;
+  }
+
+  #numberOfOpenIssues {
+    left: 0px;
+    margin-left: 60px;
+  }
+
+  #keyMetricsWrapper .decrease {
+    margin-left: 50px;
+  }
+
+  #keyMetricsWrapper {
+    position: absolute;
+  }
 }
