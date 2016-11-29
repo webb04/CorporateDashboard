@@ -15,11 +15,24 @@ class geospatial extends Component {
   }
 
   componentDidMount() {
+    // call once before polling to render content straight away
+    this.renderLocations();
+    this.locationsPolling = setInterval(this.renderLocations, 15000);
+  }
+
+  componentWillUnmount() {
+     clearInterval(this.locationsPolling);
+  }
+
+  mapClick() {
+
+  }
+
+  renderLocations() {
     fetch('src/data/employeeLocations.json')
       .then(function(response) {
          return response.json();
       }).then(function(response) {
-        console.log(response);
           var map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: 51.50735, lng: -0.12776},
             zoom: 12,
@@ -100,11 +113,6 @@ class geospatial extends Component {
       }).catch(function(err) {
 
       });
-
-  }
-
-  mapClick() {
-
   }
 
   render() {

@@ -37,7 +37,6 @@ export function fetchNumberOfOpenIssues() {
            total += x;
         }
        });
-       console.log(total);
        dispatch({ type: FETCH_SUCCESS, amount: total });
       }
     });

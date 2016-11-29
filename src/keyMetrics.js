@@ -15,62 +15,71 @@ let chartSeries = [
 			name: 'Paying customers per hour',
 			color: '#ff7f0e',
 			style: {
-				"stroke-width": 2,
-				"stroke-opacity": .2,
-				"fill-opacity": .2
+				"strokeWidth": 2,
+				"strokeOpacity": .8,
+				"fillOpacity": .8
 			}
 		}
-	],
-	xBar = function(d) {
-		return d.letter;
-	},
-	xScale = 'ordinal',
-	y = function(d) {
-		return +d;
-	},
-	yTicks = [10, "%"];
+	];
+
 
 let x = function(d) {
 	return d.index;
 }
 
-let total;
-
-function keyMetrics({ number, increase, decrease, setTotal, fetchNumberOfOpenIssues, fetchSuccess, fetchChartData, lineChartData, barChartData }) {
-
-	setInterval(function() {
+class keyMetrics extends Component {
+	componentDidMount() {
+		const { fetchNumberOfOpenIssues, fetchChartData } = this.props
 		fetchNumberOfOpenIssues();
 		fetchChartData();
-	}, 5000)
+		this.polling = setInterval(function() {
+			fetchNumberOfOpenIssues();
+			fetchChartData();
+		}, 5000)
+	}
 
-  return (
-    <div>
-				<div id="keyMetricsWrapper">
-					<div id="numberOfOpenIssues">Open Issues: { number }</div>
-					{
-							<div id="lineWrapper">
-								<LineChart
-									width= {472}
-									height= {200}
-									data= {lineChartData}
-									chartSeries= {chartSeries}
-									x= {x} />
-							</div>
-					}
+	componentWillUnmount() {
+		clearInterval(this.polling);
+	}
 
-					{
-							<div id="barWrapper">
-								<BarChart ylabel='Reported Issues'
-									width={345}
-									height={300}
-									margin={margin}
-									data={barChartData} />
-							</div>
-					}
+  render() {
+		const { number, increase, decrease, setTotal, fetchSuccess, lineChartData, barChartData } = this.props
 
-			</div>
-    </div>
-  )
+	  return (
+	    <div>
+					<div id="keyMetricsWrapper">
+						<div id="numberOfOpenIssues">Open Issues: { number }</div>
+						{
+							lineChartData ?
+								<div id="lineWrapper">
+									<LineChart
+										width= {472}
+										height= {200}
+										data= {lineChartData}
+										chartSeries= {chartSeries}
+										x= {x} />
+								</div>
+							:
+								null
+						}
+
+						{
+							barChartData ?
+								<div id="barWrapper">
+									<BarChart ylabel='Reported Issues'
+										width={345}
+										height={300}
+										margin={margin}
+										data={barChartData} />
+								</div>
+							:
+								null
+						}
+
+				</div>
+	    </div>
+	  )
+  }
 }
 
 export default connect(

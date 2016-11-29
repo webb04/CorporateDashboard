@@ -21,6 +21,15 @@ class dataView extends Component {
 
   componentDidMount() {
     this.setState({ visibleIssues: []});
+    this.fetchIssues();
+    this.fetchingIssues = setInterval(this.fetchIssues.bind(this), 10000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.fetchingIssues);
+  }
+
+  fetchIssues() {
     var that = this;
     fetch('/src/data/issues.json')
       .then(function(response) {
