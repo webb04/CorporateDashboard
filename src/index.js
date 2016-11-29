@@ -7,7 +7,8 @@ import keyMetrics from './keyMetrics'
 import dataView from './dataView'
 
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
-import { createStore, combineReducers } from 'redux'
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
+import thunk from 'redux-thunk'
 
 import { Provider } from 'react-redux'
 import keyMetricsReducer from './reducers/keyMetricsReducer'
@@ -17,7 +18,7 @@ const reducer = combineReducers({
   routing: routerReducer
 })
 
-const store = createStore(reducer);
+const store = createStore(reducer, applyMiddleware(thunk));
 
 const Container = (props) => <div>
   <Nav />

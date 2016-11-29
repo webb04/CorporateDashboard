@@ -5,7 +5,7 @@ import BarChart from 'react-bar-chart';
 
 import $ from 'jquery'
 import { connect } from 'react-redux'
-import { increase, decrease, setTotal } from './actions/count'
+import { increase, decrease, setTotal, fetchNumberOfOpenIssues, fetchChartData, fetchSuccess } from './actions/count'
 
 const margin = {top: 20, right: 20, bottom: 30, left: 40};
 
@@ -34,49 +34,20 @@ let x = function(d) {
 	return d.index;
 }
 
-let lineChartData;
-let barChartData;
+let total;
 
-function keyMetrics({ number, increase, decrease, setTotal }) {
+function keyMetrics({ number, increase, decrease, setTotal, fetchNumberOfOpenIssues, fetchSuccess, fetchChartData, lineChartData, barChartData }) {
 
-	let fetchNumberOfOpenIssues = setInterval(function(){
-	  $.ajax({
-	   type: "GET",
-	   url: "src/data/keyMetrics.csv",
-	   dataType: "text",
-	   success: function(allText) {
-	     var trimmedText = allText.replace(/\s+/g, ',').trim().split(',');
-	     var total = 0;
-	     trimmedText.map(x => {
-	       x = parseInt(x);
-	       if (typeof x === 'number' && !isNaN(x)) {
-	         total += x;
-	      }
-	     });
-	    setTotal(total);
-	    }
-	  });
-	}, 1000);
-
-	(function(){
-		fetch('src/data/keyMetricsChartData.json')
-		.then(function(response){
-			return response.json();
-		}).then(function(response) {
-			lineChartData = response.line;
-			barChartData = response.bar;
-		})
-	})();
+	setInterval(function() {
+		fetchNumberOfOpenIssues();
+		fetchChartData();
+	}, 5000)
 
   return (
     <div>
 				<div id="keyMetricsWrapper">
 					<div id="numberOfOpenIssues">Open Issues: { number }</div>
-					<button className="decrease" onClick={() => decrease(1)}>Decrease</button>
-					&nbsp;&nbsp;
-					<button onClick={() => increase(1)}>Increase</button>
 					{
-						lineChartData ?
 							<div id="lineWrapper">
 								<LineChart
 									width= {472}
@@ -85,12 +56,9 @@ function keyMetrics({ number, increase, decrease, setTotal }) {
 									chartSeries= {chartSeries}
 									x= {x} />
 							</div>
-						:
-							null
 					}
 
 					{
-						barChartData ?
 							<div id="barWrapper">
 								<BarChart ylabel='Reported Issues'
 									width={345}
@@ -98,8 +66,6 @@ function keyMetrics({ number, increase, decrease, setTotal }) {
 									margin={margin}
 									data={barChartData} />
 							</div>
-						:
-							null
 					}
 
 			</div>
@@ -108,6 +74,6 @@ function keyMetrics({ number, increase, decrease, setTotal }) {
 }
 
 export default connect(
-  state => ({ number: state.keyMetricsReducer.number }),
-  { increase, decrease, setTotal }
+  state => ({ number: state.keyMetricsReducer.number, lineChartData: state.keyMetricsReducer.lineChartData, barChartData: state.keyMetricsReducer.barChartData }),
+  { increase, decrease, setTotal, fetchNumberOfOpenIssues, fetchSuccess, fetchChartData }
 )(keyMetrics)
